@@ -1,0 +1,56 @@
+﻿using API.DataBase;
+using API.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
+
+namespace API.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]   
+    public class UserController:ControllerBase
+    {
+
+        ApiContext context;
+        public UserController(ApiContext context)
+        {
+            this.context = context;
+        }
+        /// <summary>
+        /// Registration new user
+        /// </summary>
+        /// <param name="id">Here is the description for ID.</param>
+        /// <param name="Login">User login</param>
+        /// <param name="Password">User password</param>
+        /// <response code="200">Success create user</response>
+        /// <response code="400">Bad parameter value</response>
+        [HttpPost("/Registration")]
+        public ActionResult reg([FromBody][Required] User user)
+        {
+            //ModelState.AddModelError();
+            context.Users.Add(user);
+            context.SaveChanges();
+            return Ok("Success create user");
+        }
+
+        /// <summary>
+        /// Authorization user
+        /// </summary>
+        /// <param name="login"></param>
+        /// <param name="password"></param>
+        /// <response code="200">Success login</response>
+        /// <response code="400">Not found user</response>
+        /// <returns >token</returns>
+        [HttpPost("/Authorization")]
+        [ProducesResponseType(typeof(int),200)]
+        public ActionResult auth([FromBody][Required] User user)
+        {
+            var obj = context.Users.FirstOrDefault(q=>q.password == user.password && q.login == user.login);
+            if (obj == null)
+                return BadRequest("Not found user");
+            obj.token = new Random().Next(100000,999999);
+            context.Users.Update(obj);
+            context.SaveChanges();
+            return Ok(obj.token);
+        }
+    }
+}
