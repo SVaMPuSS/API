@@ -52,5 +52,6 @@ namespace API.Controllers
             context.SaveChanges();
             return Ok(obj.token);
         }
+
     }
 }

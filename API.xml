@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>API</name>
+    </assembly>
+    <members>
+        <member name="M:API.Controllers.UserController.reg(API.Models.User)">
+            <summary>
+            Registration new user
+            </summary>
+            <param name="id">Here is the description for ID.</param>
+            <param name="Login">User login</param>
+            <param name="Password">User password</param>
+            <response code="200">Success create user</response>
+            <response code="400">Bad parameter value</response>
+        </member>
+        <member name="M:API.Controllers.UserController.auth(API.Models.User)">
+            <summary>
+            Authorization user
+            </summary>
+            <param name="login"></param>
+            <param name="password"></param>
+            <response code="200">Success login</response>
+            <response code="400">Not found user</response>
+            <returns >token</returns>
+        </member>
+    </members>
+</doc>
