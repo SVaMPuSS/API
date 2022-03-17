@@ -14,4 +14,4 @@
 >microsoft.entityframeworkcore.sqlserver
 >```
 >скачать нужно такую версию, которая подходит под вашу версию .net
->####посмотреть версию .net можно в .csproj файле, в xml тэге TargetFramework
+####посмотреть версию .net можно в .csproj файле, в xml тэге TargetFramework
