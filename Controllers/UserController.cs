@@ -15,6 +15,7 @@ namespace API.Controllers
         {
             this.context = context;
         }
+
         /// <summary>
         /// Registration new user
         /// </summary>
