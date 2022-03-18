@@ -24,5 +24,21 @@
             <response code="400">Not found user</response>
             <returns >token</returns>
         </member>
+        <member name="M:API.Controllers.UserController.delete(System.Int32)">
+            <summary>
+            Delete user by id
+            </summary>
+            <param name="id">User id</param>
+            <response code="200">Success delete user</response>
+            <response code="400">User not found</response>
+        </member>
+        <member name="M:API.Controllers.UserController.getUser(System.Int32)">
+            <summary>
+            Get user by id
+            </summary>
+            <param name="id">User id</param>
+            <response code="200">Success found user</response>
+            <response code="400">Not found user</response>
+        </member>
     </members>
 </doc>
