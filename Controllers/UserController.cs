@@ -84,5 +84,24 @@ namespace API.Controllers
                 return BadRequest("User not found");
             return Ok(obj);
         }
+        /// <summary>
+        /// Patch user
+        /// </summary>
+        /// <param name="login"></param>
+        /// <param name="password"></param>
+        /// <response code="200">Success patch user</response>
+        /// <response code="400">User not found</response>
+        [HttpPatch("/Patch/{id}")]
+        public ActionResult update([Required] string login,[Required] string password, [Required]int id)
+        {
+            var obj = context.Users.FirstOrDefault(q => q.id == id);
+            if(obj == null)
+                return BadRequest("User not found");
+            obj.login = login;
+            obj.password = password;
+            context.Update(obj);
+            context.SaveChanges();
+            return Ok("Success update");
+        }
     }
 }

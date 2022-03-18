@@ -40,5 +40,14 @@
             <response code="200">Success found user</response>
             <response code="400">Not found user</response>
         </member>
+        <member name="M:API.Controllers.UserController.update(System.String,System.String,System.Int32)">
+            <summary>
+            Patch user
+            </summary>
+            <param name="login"></param>
+            <param name="password"></param>
+            <response code="200">Success patch user</response>
+            <response code="400">User not found</response>
+        </member>
     </members>
 </doc>
